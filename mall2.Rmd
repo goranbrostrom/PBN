@@ -1,0 +1,399 @@
+---
+title: "mall"
+author: "Göran Broström"
+date: "28 Oktober 2015"
+output: html_document
+fontsize: 12pt
+---
+
+# Inledning
+
+Dagens match går mot *Kamraterna*, detta är andra halvlek från den 22 oktober 2015 (som en prototyp).
+
+```{r preliminaries, echo = FALSE}
+library(knitr)
+library(Bridge)
+opts_chunk$set(echo = FALSE, comment = "")
+
+```
+## Andra halvlek
+
+```{r getdata, echo=FALSE}
+source("R/parse_pbn.R")
+##pbn <- readRes("2015-10-15a.pbn")  # Obsolete?
+boards <- parse_pbn("2015-10-22b.pbn") # Change as needed
+NS <- "Kalle & Micke (NS)"
+EW <- "Leif & Kristoffer (EW)"
+NSpar <- 4 # Kalle & Micke
+EWpar <- 304 # Leif & Kristoffer
+IMP <- numeric(12)
+meanscore <- numeric(12)
+source("R/getGiv.R")
+source("R/getRes.R")
+```
+
+### Bricka 13
+
+```{r giv1}
+br <- 1 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res1, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** .
+
+### Bricka 14
+
+```{r giv2}
+br <- 2 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res2, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 15
+
+```{r giv3}
+br <- 3 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res3, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Kan Väst spela hem 5hj efter sp 8 i utspel? Jo, ta för Esset, klöver Kung-Ess-stöld, spader Knekt. Syd tar in sig och måste vända i trumf. Hjärter Ess, klöver Kung med rutersak, klöver till stöld och trumfen i botten. Spelföraren måste nu avgöra om Syd hade tre eller fyra klöver från början men oddsen är för den aktuella sitsen *(Denna analys är tillagd i efterhand!)*
+
+### Bricka 16
+
+```{r giv4}
+br <- 4 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res4, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 17
+
+```{r giv5}
+br <- 5 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res5, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 18
+
+```{r giv6}
+br <- 6 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res6, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 19
+
+```{r giv7}
+br <- 7 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res7, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 20
+
+```{r giv8}
+br <- 8 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res8, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 21
+
+```{r giv9}
+br <- 9 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res9, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 22
+
+```{r giv10}
+br <- 10 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res10, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 23
+
+```{r giv11}
+br <- 11 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res11, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Bricka 24
+
+```{r giv12}
+br <- 12 # To save typing, change only this!
+giv <- getGiv(br, boards[[br]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res12, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  .
+
+### Sammanfattning halvleken
+
+```{r samf}
+totres <- sum(IMP)
+```
+
+Ställning: `r totres` IMP (`r sum(IMP[IMP > 0])` -- `r -sum(IMP[IMP < 0])`).
+
+NS medelmedianscore: `r round(mean(meanscore))`.
+
+Utveckling bricka för bricka:
+
+```{r utv}
+plot(1:12, cumsum(IMP), type = "b",
+xlab = "Bricka", ylab = "Kumulativa IMP", col = "blue")
+abline(h = 0)
+```

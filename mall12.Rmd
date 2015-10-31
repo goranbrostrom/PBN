@@ -1,0 +1,814 @@
+---
+title: "Match mot GEKAB"
+author: "Göran Broström"
+date: "29 Oktober 2015"
+output: html_document
+fontsize: 12pt
+---
+
+# Inledning
+
+Dagens match går mot *GEKAB*. Vi har för dagen en gästspelare, Anders Fryklund.
+
+```{r preliminaries, echo = FALSE}
+library(knitr)
+library(Bridge)
+opts_chunk$set(echo = FALSE, comment = "")
+
+```
+## Första halvlek
+
+```{r getdata, echo=FALSE}
+source("R/parse_pbn.R")
+boards <- parse_pbn("2015-10-29a.pbn") # Change as needed
+NS <- "Tomas & Leif (NS)"
+EW <- "Anders & Micke (EW)"
+NSpar <- 3 # Tomas & Leif
+EWpar <- 303 # Anders & Micke
+IMP <- numeric(24)
+meanscore <- numeric(24)
+source("R/getGiv.R")
+source("R/getRes.R")
+```
+
+### Bricka 1
+
+```{r giv1}
+br <- 1 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res1, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** Efter spader ut går man hem med öppna kort, men knappast annars. Efter hjärter åtta ut, däremot, är det väl snudd på straffbart att gå bet?
+
+### Bricka 2
+
+```{r giv2}
+br <- 2 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res2, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** Ojoj, svag sang slår till. Förvånar mig att Nord inte flyr i en högfärg (till exempel *2ru + RD*). Hjälper inte denna gång, men ändå...
+
+### Bricka 3
+
+```{r giv3}
+br <- 3 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:** Snabb kontring av Leif & Tomas! 3NT  är inte särskilt bra, men ... 
+
+```{r res3, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  
+
+### Bricka 4
+
+```{r giv4}
+br <- 4 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res4, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Hård (rå) budgivning på NS. Och ÖV bör hitta rutern att vila i efter att en invit avslagits.
+
+### Bricka 5
+
+```{r giv5}
+br <- 5 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res5, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** Ser ut som dagens medel.
+
+### Bricka 6 
+
+```{r giv6}
+br <- 6 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res6, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Hur kan Nord bli spelförare i 1NT? Hursomhelst ger det oss bra med poäng.
+
+### Bricka 7
+
+```{r giv7}
+br <- 7 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res7, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Vi upprepar föregående fråga (med viss variation): Hur kan Syd bli spelförare i 2ru? 3NT (N) ser frestande ut, men tycks gå att beta.
+
+### Bricka 8
+
+```{r giv8}
+br <- 8 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res8, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Ingen hittar ruter ut? Fick inte Nord tillfälle att kliva in med 1ru?
+
+### Bricka 9
+
+```{r giv9}
+br <- 9 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res9, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  3NT ser inte så bra ut, men är man där bör man väl spela hem det?
+
+### Bricka 10
+
+```{r giv10}
+br <- 10 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res10, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Standardutgång med slamvibbar.
+
+### Bricka 11
+
+```{r giv11}
+br <- 11 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res11, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  3NT var ett udda slutbud, men det ser ut att stå även med bästa försvar (klöver ut).
+
+### Bricka 12
+
+```{r giv12}
+br <- 12 # To save typing, change only this!
+giv <- getGiv(boards[[br]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res12, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** Inte mycket att säga om.
+
+### Sammanfattning halvleken
+
+```{r samf}
+totres <- sum(IMP)
+```
+
+Ställning: `r totres` IMP (`r sum(IMP[IMP > 0])` -- `r -sum(IMP[IMP < 0])`).
+
+NS medelmedianscore: `r round(mean(meanscore[1:12]))`.
+
+Utveckling bricka för bricka:
+
+```{r utv}
+plot(1:12, cumsum(IMP[1:12]), type = "b",
+xlab = "Bricka", ylab = "Kumulativa IMP", col = "blue")
+abline(h = 0)
+```
+
+
+## Andra halvlek
+
+```{r getdata2, echo=FALSE}
+boards <- parse_pbn("2015-10-29b.pbn") # Change as needed
+NS <- "Leif & Tomas (NS)"
+EW <- "Anders & Micke (EW)"
+NSpar <- 3 # Tomas & Leif
+EWpar <- 303 # Anders & Micke
+```
+
+### Bricka 13
+
+```{r giv13} 
+br <- 13 # 
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res13, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** Med öppna kort står 5ruter, men man vill inte vara där.
+
+### Bricka 14
+
+```{r giv14}
+br <- 14 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res14, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Hur kommer ÖV i 4hj?? Jo, Öst öppnade med 1hj, Syd dubblade(!, men jag gillar det!), och Väst provade det sanslösa budet 1sp(!). Nord la upp 3NT (som jag inte gillar, av flera skäl: (i) Om partnern får ha vad han har för en UD så är det ett kraftigt överbud, (ii) Anpassningen är inte bra, vilket leder till att (iii) Dubbelt är det självklart rätta budet), och Öst kämpade på med 4ru!!
+
+### Bricka 15
+
+```{r giv15}
+br <- 15 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res15, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  6 klöver är en bra slam, men inte 6 hjärter!
+
+### Bricka 16
+
+```{r giv16}
+br <- 16 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res16, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  3 NT var inte lika bra som 2 spader.
+
+### Bricka 17
+
+```{r giv17}
+br <- 17 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res17, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Det ser inte ut som om 4 spader har en sportslig, inte ens med öppna kort. Jo, om man får hjärter ut, tar för Ess och Kung och spelar ruter mot Kungen; då går man hem om Öst ingriper Esset. Tomas fick det försvaret.
+
+### Bricka 18
+
+```{r giv18}
+br <- 18 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]][1:2])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res18, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Ruter Kung ut mot 4 hjärter var inte lyckat (denna gång).
+
+### Bricka 19
+
+```{r giv19}
+br <- 19 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res19, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** 3 NT var en snygg offring mot 4sp!
+
+### Bricka 20
+
+```{r giv20}
+br <- 20 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res20, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** 3 klöver av Syd?? 4 hjärter var inte heller begåvat.
+
+### Bricka 21
+
+```{r giv21}
+br <- 21 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res21, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  Bra offring mot 4 hjärter! I själva verket kom inte ÖV in i budgivningen där Tomas & Leif satt NS: *3kl-(pass)-(5ru)-(pass runt)*
+var den korta och kärnfulla budgivningen!
+
+### Bricka 22
+
+```{r giv22}
+br <- 22 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:** 
+
+```{r res22, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  En marginal-3NT som står ger poäng! (Kan Nord spela hem 3NT efter ruter ut? Ser inte så ut, men det är nära!)
+
+
+
+### Bricka 23
+
+```{r giv23}
+br <- 23 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res23, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:**  4 hjärter på 4-3, jag tackar! Och många poäng blir det också.
+
+Bra budgivning:
+
+```
+Syd    Väst   Nord   Öst
+1ru    pass   1hj    1sp
+2kl    2sp    D(!)   pass
+4hj(!) pass   pass   pass
+```
+
+
+### Bricka 24
+
+```{r giv24}
+br <- 24 # To save typing, change only this!
+giv <- getGiv(boards[[br - 12]])
+for(i in 1:12){
+    cat(giv[i], "\n")
+}
+```
+
+**Resultat:**
+
+```{r res24, echo = FALSE, comment = ""}
+tabl <- getRes(boards[[br - 12]])
+NSres <- tabl[tabl$PairId_NS == NSpar, ]
+EWres <- tabl[tabl$PairId_EW == EWpar, ]
+IMP[br] <- imp(NSres[, "Score_NS"] + EWres[, "Score_EW"])
+meanscore[br] <- median(tabl$Score_NS)
+```
+
+*Medianscore:* `r round(meanscore[br])` (NS).
+
+`r NS`: Kontrakt: `r NSres["Contract"]`, spelförare: `r NSres["Declarer"]`, utspel: `r NSres["Lead"]`, score: `r NSres["Score_NS"]`.  
+`r EW`: Kontrakt: `r EWres["Contract"]`, spelförare: `r EWres["Declarer"]`, utspel: `r EWres["Lead"]`, score: `r EWres["Score_EW"]`.  
+
+IMP: `r IMP[br]`
+
+**Analys:** Törs man gissa att Nord öppnade med 2 spader i andra hand? Kul att se fällan slå igen!
+
+### Sammanfattning halvleken
+
+```{r samf2}
+IMP2 <- IMP[13:24]
+totres <- sum(IMP2)
+```
+
+Ställning: `r totres` IMP (`r sum(IMP2[IMP2 > 0 ])` -- `r -sum(IMP2[IMP2 < 0])`).
+
+NS medelmedianscore: `r round(mean(meanscore[13:24]))`.
+
+Utveckling bricka för bricka:
+
+```{r utv2}
+plot(13:24, cumsum(IMP[13:24]), type = "b",
+xlab = "Bricka", ylab = "Kumulativa IMP", col = "blue", ylim = c(-10, 100))
+abline(h = 0)
+```
+
+I sanning en lysande utveckling! Bra jobbat!!
+
+# Sammanfattning av matchen
+
+```{r samftot}
+totres <- sum(IMP)
+```
+
+Slutställning: `r totres` IMP (`r sum(IMP[IMP > 0])` -- `r -sum(IMP[IMP < 0])`), dvs **25 -- 0**.
+
+NS medelmedianscore: `r round(mean(meanscore))`.
+
+Utveckling bricka för bricka:
+
+```{r utvtot}
+plot(1:24, cumsum(IMP), type = "b", ylim = c(-10, 100),
+xlab = "Bricka", ylab = "Kumulativa IMP", col = "blue", axes = FALSE)
+axis(1, at = c(1, 6, 12, 18, 24))
+axis(2)
+box()
+abline(h = 0)
+```
+
+Snacka om att lägga in en växel i andra halvlek!

@@ -1,16 +1,21 @@
-getGiv <- function(no, board){
+getGiv <- function(board){
     ## Måste fixa zoner också!
     ## OK, board innehåller nu två strängar, '[Deal...' och '[Vulnerable]]
     ## 'no' is "Board No."
-    
-    txt <- board[1]
-    vul <- board[2]
+
+    ## Update: Remove 'no' from argument list, read it from 'board' instead.
+    ##         Argument 'board' is now full output from 'parse_pbn'
+    no <- board[1] # Board No.
+    no <- strsplit(no, split = " ", fixed = TRUE)[[1]][2]
+    no <- gsub("]", "", no)
+    txt <- board[2]  # Deal
+    vul <- board[3]  # Vulnerability
     vul <- gsub("[", "", vul, fixed = TRUE)
     vul <- gsub("]", "", vul, fixed = TRUE)
     vul <- strsplit(vul, split = " ")[[1]][2]
     x <- strsplit(txt, split = " ")[[1]]
     x <- x[-1]
-    giv <- substr(x[1], 1, 1)
+    giv <- substr(x[1], 1, 1) # Dealer
     x[1] <- strsplit(x[1], split = ":")[[1]][2]
     x[4] <- strsplit(x[4], split = "]")[[1]][1]
     if (giv == "N"){
@@ -26,7 +31,7 @@ getGiv <- function(no, board){
         names(x) <- c("W", "N", "E", "S")
         giv <- "West"
     }else{
-        error("Unknown dealer!")
+        stop("Unknown dealer!")
     }
     out <- character(12)
     for(i in 1:12) out[i] <- "                                       "
